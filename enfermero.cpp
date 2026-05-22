@@ -1,0 +1,59 @@
+//
+//  enfermero.cpp
+//  
+//
+//  Created by Alejandro Estrada Pérez on 22/05/26.
+//
+
+#include "enfermero.hpp"
+
+enfermero::enfermero(string nom,
+                     int ed,
+                     int idEmp,
+                     double sal,
+                     string tur,
+                     string area,
+                     int exp)
+
+: empleado(nom,
+           ed,
+           idEmp,
+           sal,
+           tur) {
+
+    areaAsignada = area;
+    experiencia = exp;
+}
+
+void enfermero::trabajar() {
+
+    cout << "\nEl enfermero "
+         << nombre
+         << " esta trabajando en "
+         << areaAsignada
+         << "."
+         << endl;
+}
+
+void enfermero::tomarSignos() {
+
+    cout << "\n===== SIGNOS VITALES ====="
+         << endl;
+
+    cout << "Presion arterial: 120/80"
+         << endl;
+
+    cout << "Temperatura: 37 C"
+         << endl;
+
+    cout << "Frecuencia cardiaca: 75 bpm"
+         << endl;
+}
+
+void enfermero::asistirDoctor() {
+
+    cout << "El enfermero "
+         << nombre
+         << " esta asistiendo al doctor."
+         << endl;
+}
