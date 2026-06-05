@@ -6,7 +6,7 @@ Sistema desarrollado en C++ utilizando Programación Orientada a Objetos (POO) p
 
 ## Objetivo
 
-Implementar los conceptos fundamentales de Programación Orientada a Objetos:
+Implementar
 
 - Clases y objetos
 - Encapsulamiento
@@ -44,29 +44,7 @@ Implementar los conceptos fundamentales de Programación Orientada a Objetos:
 - Registrar ingresos de emergencia.
 - Asignar pacientes a salas de urgencias.
 
-## Diagrama General de Clases
 
-```
-Persona
-│
-├── Empleado
-│   ├── Doctor
-│   └── Enfermero
-│
-└── Paciente
-
-Hospital
-├── Consultorio
-└── SalaUrgencias
-```
-
-## Tecnologías Utilizadas
-
-- Lenguaje: C++
-- Paradigma: Programación Orientada a Objetos
-- Compilador: g++
-- Control de versiones: Git
-- Repositorio: GitHub
 
 ## Estructura del Proyecto
 
@@ -101,6 +79,5 @@ g++ hospital_poo.cpp doctor.cpp enfermero.cpp empleado.cpp paciente.cpp -o hospi
 
 ## Autor
 
-Alejandro Estrada
+Alejandro Estrada - A01714400
 
-Proyecto académico desarrollado para la materia de Programación Orientada a Objetos.
