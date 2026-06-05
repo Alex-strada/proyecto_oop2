@@ -94,6 +94,7 @@ public:
         enfermero e1("Luis Torres", 30, 2001, 18000, "Nocturno", "Urgencias", 5);
 
         do {
+            
             cout << "\n----- " << nombre << " -----" << endl;
             cout << "1. Consulta general" << endl;
             cout << "2. Emergencia" << endl;
@@ -150,6 +151,12 @@ public:
                     cout << "\nOpcion invalida." << endl;
                     break;
             }
+            if (opcion != 5) {
+                    cout << "\nPresione Enter para continuar";
+                    cin.get(); //
+                    cout << string(40, '\n') << endl; // Imprime un salto de línea gigante (25 líneas vacías)
+                        }
+
         } while(opcion != 5);
     }
 };
