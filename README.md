@@ -86,20 +86,10 @@ proyecto_oop2/
 ```
 
 ## Compilación
+g++ hospital_poo.cpp doctor.cpp enfermero.cpp empleado.cpp paciente.cpp -o hospital
 
-### Linux / macOS
-
-```bash
-g++ *.cpp -o hospital
+## Ejecución 
 ./hospital
-```
-
-### Windows (MinGW)
-
-```bash
-g++ *.cpp -o hospital.exe
-hospital.exe
-```
 
 ## Conceptos de POO Aplicados
 
