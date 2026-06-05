@@ -4,7 +4,6 @@
 //
 //  Created by Alejandro Estrada Pérez on 22/05/26.
 //
-
 #include "doctor.hpp"
 
 doctor::doctor(string nom,

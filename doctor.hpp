@@ -16,7 +16,7 @@
 
 class doctor : public empleado {
 
-protected:
+private:
 
     string especialidad;
     int consultorio;

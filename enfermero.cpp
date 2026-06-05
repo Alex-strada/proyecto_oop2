@@ -25,6 +25,35 @@ enfermero::enfermero(string nom,
     experiencia = exp;
 }
 
+void enfermero::trabajar(){
+    
+    cout << "\nEl enfermero "
+         << nombre
+         << " Esta laborando en"
+    <<areaAsignada << endl;
+        
+}
+
+void enfermero::tomarSignos(){
+    
+    cout << "\n---Signos Vitales---" << endl;
+    
+    cout << "Presion Arterial normal 120/80" << endl;
+    
+    cout << "Temperatura: normal" << endl;
+    
+    cout << "Frecuencia cardiaca estable" << endl;
+         
+}
+
+void enfermero::asistirDoctor(){
+    
+    cout << "El enfermero "
+    << nombre
+    << "esta ayudando al doctor"
+    << endl;
+}
+/*
 void enfermero::trabajar() {
 
     cout << "\nEl enfermero "
@@ -57,3 +86,4 @@ void enfermero::asistirDoctor() {
          << " esta asistiendo al doctor."
          << endl;
 }
+*/

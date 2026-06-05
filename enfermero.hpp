@@ -15,6 +15,46 @@
 #include "empleado.hpp"
 
 class enfermero : public empleado {
+    
+private:
+    string areaAsignada;
+    int experiencia;
+    
+public:
+    enfermero (string nom,
+               int ed,
+               int idEmp,
+               double sal,
+               string tur,
+               string area,
+               int exp);
+    
+    void trabajar () override;
+    
+    void tomarSignos ();
+    
+    void asistirDoctor ();
+        
+    
+    
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+class enfermero : public empleado {
 
 protected:
 
@@ -37,3 +77,4 @@ public:
 
     void asistirDoctor();
 };
+*/
