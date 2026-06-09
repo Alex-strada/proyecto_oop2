@@ -39,31 +39,3 @@ public:
     void mostrarDatos();
     
 };
-
-/*
-    
-class empleado {
-
-protected:
-
-    string nombre;
-    int edad;
-    int idEmpleado;
-    double salario;
-    string turno;
-
-public:
-
-    empleado(string nom,
-              int ed,
-              int idEmp,
-              double sal,
-              string tur);
-
-    virtual void trabajar();
-
-    void registrarEntrada();
-
-    void mostrarDatos();
-};
-*/

@@ -51,30 +51,3 @@ public:
 
 
 
-
-
-/*
-class enfermero : public empleado {
-
-protected:
-
-    string areaAsignada;
-    int experiencia;
-
-public:
-
-    enfermero(string nom,
-              int ed,
-              int idEmp,
-              double sal,
-              string tur,
-              string area,
-              int exp);
-
-    void trabajar() override;
-
-    void tomarSignos();
-
-    void asistirDoctor();
-};
-*/

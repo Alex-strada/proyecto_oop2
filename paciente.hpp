@@ -9,5 +9,34 @@
 
 #include <stdio.h>
 
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class paciente {
+
+private:
+    string nombre;
+    int edad;
+    string diagnostico;
+
+public:
+    paciente();
+
+    void registrarPaciente();
+
+    void formulario();
+
+    string generarDiagnostico();
+
+    void mostrarExpediente();
+
+    void solicitarCita();
+
+    void solicitarCita(string fecha);
+};
+
 #endif /* paciente_hpp */
 

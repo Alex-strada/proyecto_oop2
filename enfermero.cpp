@@ -53,37 +53,3 @@ void enfermero::asistirDoctor(){
     << "esta ayudando al doctor"
     << endl;
 }
-/*
-void enfermero::trabajar() {
-
-    cout << "\nEl enfermero "
-         << nombre
-         << " esta trabajando en "
-         << areaAsignada
-         << "."
-         << endl;
-}
-
-void enfermero::tomarSignos() {
-
-    cout << "\n===== SIGNOS VITALES ====="
-         << endl;
-
-    cout << "Presion arterial: 120/80"
-         << endl;
-
-    cout << "Temperatura: 37 C"
-         << endl;
-
-    cout << "Frecuencia cardiaca: 75 bpm"
-         << endl;
-}
-
-void enfermero::asistirDoctor() {
-
-    cout << "El enfermero "
-         << nombre
-         << " esta asistiendo al doctor."
-         << endl;
-}
-*/
