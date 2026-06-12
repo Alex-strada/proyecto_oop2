@@ -90,15 +90,16 @@ g++ hospital_poo.cpp doctor.cpp enfermero.cpp empleado.cpp paciente.cpp -o hospi
 
 ## Conceptos de POO Aplicados
 
-- **Herencia**: `doctor` y `enfermero` heredan de `empleado`.
-- **Clase abstracta**: `empleado` define `trabajar()` como método virtual puro (`= 0`), obligando a sus clases hijas a implementarlo.
-- **Polimorfismo**: arreglo de punteros `empleado* personal[]` que invoca `trabajar()` polimórficamente según el tipo real del objeto (doctor o enfermero).
-- **Encapsulamiento**: atributos privados/protegidos con acceso mediante métodos públicos (`getNombre()`, `mostrarDatos()`, etc.).
-- **Sobrecarga de métodos**: `paciente::solicitarCita()` y `paciente::solicitarCita(string fecha)`.
-- **Sobreescritura de métodos**: `trabajar()` en `doctor` y `enfermero`.
-- **Composición/Agregación**: `hospital` se relaciona con varios objetos `empleado` (agregación, 0..*) y con `paciente` (agregación, 1).
+- **Herencia**: doctor y enfermero heredan de empleado.
+- **Clase abstracta**:  como método virtual puro, obligando a sus clases hijas a implementarlo.
+- **Polimorfismo**: arreglo de punteros.
+- **Encapsulamiento**: atributos privados/protegidos con acceso mediante métodos públicos.
+- **Sobrecarga de métodos**
+- **Sobreescritura de métodos**
+- **Composición/Agregación**
 
 ## Diagrama UML
+<img width="1536" height="1024" alt="UML" src="https://github.com/user-attachments/assets/994a2129-af76-4528-9013-d5032da3753a" />
 
 
 ## Autor
