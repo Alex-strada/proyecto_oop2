@@ -22,7 +22,7 @@ Implementar:
 
 - Registrar entrada de empleados.
 - Mostrar datos generales (nombre, edad, id, salario, turno).
-- Método `trabajar()` abstracto, implementado de forma distinta por cada tipo de empleado (polimorfismo).
+- Método trabajar() abstracto, implementado de forma distinta por cada tipo de empleado (polimorfismo).
 
 ### Gestión de Doctores
 
@@ -45,8 +45,8 @@ Implementar:
 
 ### Pase de lista (Polimorfismo)
 
-- El hospital mantiene un arreglo de punteros `empleado*` con varios doctores y enfermeros.
-- Al recorrerlo, cada objeto ejecuta su propia versión de `trabajar()` según su tipo real (doctor o enfermero).
+- El hospital mantiene un arreglo de punteros empleado* con varios doctores y enfermeros.
+- Al recorrerlo, cada objeto ejecuta su propia versión de trabajar() según su tipo real (doctor o enfermero).
 
 ## Estructura del Proyecto
 
@@ -84,7 +84,7 @@ g++ hospital_poo.cpp doctor.cpp enfermero.cpp empleado.cpp paciente.cpp -o hospi
 ## Casos en los que el proyecto deja de funcionar
 
 - Si se ingresa una opción del menú fuera del rango 1-6, se muestra "Opción inválida" pero el programa continúa (no se rompe).
-- Si en el formulario de síntomas se ingresa un valor no numérico, `cin` queda en estado de error y puede provocar un ciclo infinito al leer la siguiente opción.
+- Si en el formulario de síntomas se ingresa un valor no numérico, queda en estado de error y puede provocar un ciclo infinito.
 - Si se agregan más de MAX_PERSONAL (10) empleados al arreglo, se ignoran los excedentes.
 - Si se llama a mostrarExpediente() antes de registrar al paciente, se muestra el historial vacío con el mensaje "Sin registros aún".
 
