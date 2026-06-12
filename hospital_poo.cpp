@@ -1,9 +1,8 @@
-//
-//  hospital_poo.cpp
-//
-//
-//  Created by Alejandro Estrada Pérez on 22/05/26.
-//
+/*  hospital_poo.cpp
+ * Este es un proyecto demo para la clase  Programación Orientado a
+ * Objetos. Es un programa que captura diferentes tipos de empleados como doctor y enfermero, los cuales dan asistencia medica a los pacientes los cuales estan dentro del hospital
+ *  Created by Alejandro Estrada Pérez
+ */
 #include <iostream>
 #include <string>
 #include "hospital_poo.hpp"
@@ -13,127 +12,181 @@
 #include "enfermero.hpp"
 #include "paciente.hpp"
 
+
+
 using namespace std;
-
-class hospital {
-
-private:
-    string nombre;
-
-public:
-
-    hospital(string nom) {
-        nombre = nom;
+// Constructor de la clase hospital
+// Inicializa el nombre del hospital y el contador de personal
+hospital::hospital(string nom) {
+    nombre = nom;
+    totalPersonal = 0;
+}
+// Agrega un empleado al arreglo de personal del hospital
+void hospital::agregarPersonal(empleado* emp) {
+    // Verifica que no se exceda la capacidad máxima
+    if (totalPersonal < MAX_PERSONAL) {
+        personal[totalPersonal] = emp;
+        totalPersonal++;
     }
+}
 
-    void iniciarSistema() {
+// Menu principal del sistema hospitalario
+void hospital::iniciarSistema(paciente& p1, doctor& d1, enfermero& e1,
+                               doctor& d2, enfermero& e2) {
 
-        int opcion;
+    int opcion;
+    // Menú de opciones
+    do {
 
-        paciente p1;
+        cout << "\n----- " << nombre << " -----" << endl;
+        cout << "1. Consulta general" << endl;
+        cout << "2. Emergencia" << endl;
+        cout << "3. Agendar cita" << endl;
+        cout << "4. Ver expediente" << endl;
+        cout << "5. Pase de lista" << endl;
+        cout << "6. Salir" << endl;
+        cout << "\nSeleccione una opcion: ";
 
-        doctor d1("Carlos Mendoza", 45, 1001, 35000, "Matutino",
-                  "Cardiologia", 3);
+        cin >> opcion;
+        cin.ignore();
 
-        enfermero e1("Luis Torres", 30, 2001, 18000, "Nocturno",
-                     "Urgencias", 5);
+        switch (opcion) {
 
-        do {
+            case 1:
+                // Registro del paciente
+                p1.registrarPaciente();
+                p1.formulario();
+                
+                //atencion inicial del enfermero
+                e1.registrarEntrada();
+                e1.trabajar();
+                e1.tomarSignos();
+                e1.asistirDoctor();
+                
+                // Se guarda en historial
+                p1.agregarHistorial("\nNombre: " + p1.getNombre()); //nombre en historial
+                
+                p1.agregarHistorial("Atendido por enfermero " + e1.getNombre()); //despues de ser atendido por el enfermero añadimos nombre del enfermero
+                
+                //atencion medica
+                d1.registrarEntrada();
+                d1.trabajar();
+                
+                //diagnostico y receta
+                d1.diagnosticar(p1.generarDiagnostico());
+                d1.recetarMedicamento();
+                
+                //registo de historial clinico
+                p1.agregarHistorial("Consulta con Dr. " + d1.getNombre() +
+                                    "\n- Diagnostico: " + p1.generarDiagnostico());
+                break;
 
-            cout << "\n----- " << nombre << " -----" << endl;
-            cout << "1. Consulta general" << endl;
-            cout << "2. Emergencia" << endl;
-            cout << "3. Agendar cita" << endl;
-            cout << "4. Ver expediente" << endl;
-            cout << "5. Salir" << endl;
-            cout << "\nSeleccione una opcion: ";
+            case 2:
 
-            cin >> opcion;
-            cin.ignore();
+                cout << "\n----- URGENCIAS -----" << endl;
+                cout << "Paciente ingresado a urgencias." << endl;
+                
+                // Personal de urgencias atiende al paciente
+                e2.trabajar();
+                d2.trabajar();
+                // Registro en historial
+                p1.agregarHistorial("Atencion de urgencia con Dr. " + d2.getNombre() + " y enf. " + e2.getNombre());
 
-            switch (opcion) {
+                cout << "Emergencia atendida." << endl;
 
-                case 1:
+                break;
 
-                    p1.registrarPaciente();
-                    p1.formulario();
+            case 3: {
 
-                    e1.registrarEntrada();
-                    e1.trabajar();
-                    e1.tomarSignos();
-                    e1.asistirDoctor();
+                string fecha;
+                // Registro del paciente
+                p1.registrarPaciente();
+                
+                p1.solicitarCita();
+                
+                // Captura de fecha
+                cout << "Ingrese fecha de la cita: ";
+                getline(cin, fecha);
+                // getline lee una linea completa desde el teclado
+                // y la almacena en la variable fecha incluyendo espacios
 
-                    d1.registrarEntrada();
-                    d1.trabajar();
-                    d1.diagnosticar(p1.generarDiagnostico());
-                    d1.recetarMedicamento();
+                p1.solicitarCita(fecha);
+                p1.agregarHistorial("Cita agendada para " + fecha);
 
-                    break;
+                break;
+            }
 
-                case 2:
+            case 4:
 
-                    cout << "\n----- URGENCIAS -----" << endl;
-                    cout << "Paciente ingresado a urgencias." << endl;
+                p1.mostrarExpediente();
 
-                    e1.trabajar();
-                    d1.trabajar();
+                break;
 
-                    cout << "Emergencia atendida." << endl;
+            case 5:
 
-                    break;
-
-                case 3: {
-
-                    string fecha;
-
-                    p1.registrarPaciente();
-
-                    p1.solicitarCita();
-
-                    cout << "Ingrese fecha de la cita: ";
-
-                    getline(cin, fecha);
-
-                    p1.solicitarCita(fecha);
-
-                    break;
+                cout << "\n--- Pase de lista  ---" << endl;
+                // Recorre todos los empleados registrados
+                for (int i = 0; i < totalPersonal; i++) {
+                    // polimorfismo se usa un apuntador a la clase empleado
+                    // para usar el metodo virtual registrarEntrada
+                    personal[i]->registrarEntrada();
+                
+                    // polimorfismo se usa un apuntador a la clase empleado
+                    // para usar el metodo virtual trabajar
+                    personal[i]->trabajar(); //
                 }
 
-                case 4:
+                break;
 
-                    p1.mostrarExpediente();
+            case 6:
 
-                    break;
+                cout << "\nSaliendo del sistema..." << endl;
 
-                case 5:
+                break;
+                // Opción inválida
+            default:
 
-                    cout << "\nSaliendo del sistema..." << endl;
+                cout << "\nOpcion invalida." << endl;
+        }
+        // Pausa antes de volver al menu
+        if (opcion != 6) {
 
-                    break;
+            cout << "\nPresione Enter para continuar";
+            cin.get();
 
-                default:
+            cout << string(40, '\n');
+        }
 
-                    cout << "\nOpcion invalida." << endl;
-
-            }
-
-            if (opcion != 5) {
-
-                cout << "\nPresione Enter para continuar";
-                cin.get();
-
-                cout << string(40, '\n');
-            }
-
-        } while (opcion != 5);
-    }
-};
+    } while (opcion != 6);
+}
 
 int main() {
 
+    //Creacion de objetos en main
+    paciente p1;
+    
+    // Creación de doctores
+    doctor d1("Carlos Mendoza", 45, 1001, 35000, "Matutino",
+              "Cardiologo", 3);
+    doctor d2("Ana Ruiz", 38, 1002, 32000, "Vespertino",
+              "Pediatra", 2);
+    // creacion de enfermeros
+    enfermero e1("Luis Torres", 30, 2001, 18000, "Nocturno",
+                  "Urgencias", 5);
+    enfermero e2("Marta Diaz", 27, 2002, 17000, "Matutino",
+                  "Pediatra", 3);
+    
+    //creacion de hospital
     hospital h1("Hospital General");
 
-    h1.iniciarSistema();
+    // Agregar personal al hospital
+    // Se almacenan como apuntadores a empleado
+    h1.agregarPersonal(&d2);
+    h1.agregarPersonal(&e1);
+    h1.agregarPersonal(&e2);
+
+    //inicia el sistema
+    h1.iniciarSistema(p1, d1, e1, d2, e2);
 
     return 0;
 }

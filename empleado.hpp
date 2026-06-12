@@ -1,9 +1,6 @@
-//
+
 //  empleado.hpp
-//  
-//
-//  Created by Alejandro Estrada Pérez on 22/05/26.
-//
+//  Created by Alejandro Estrada Pérez
 
 #ifndef empleado_hpp
 #define empleado_hpp
@@ -37,5 +34,8 @@ public:
     void registrarEntrada();
     
     void mostrarDatos();
+    
+    string getNombre();
+
     
 };

@@ -1,17 +1,39 @@
 //
 //  paciente.cpp
-//  
-//
-//  Created by Alejandro Estrada Pérez on 22/05/26.
+//  Created by Alejandro Estrada Pérez
 //
 #include "paciente.hpp"
 
+//Constructor por defecto.
 paciente::paciente() {
     nombre = "";
     edad = 0;
-    diagnostico = "Sin diagnostico";
+    diagnostico = "";
+    historial = "";
+}
+//getter del nombre del paciente
+string paciente::getNombre() {
+    return nombre;
 }
 
+//Agrega un nuevo evento al historial medico
+void paciente::agregarHistorial(string evento) {
+    historial += "- " + evento + "\n";
+}
+//Muestra la informacion del paciente
+void paciente::mostrarExpediente() {
+    cout << "\n===== EXPEDIENTE =====" << endl;
+    cout << "Nombre: " << nombre << endl;
+    cout << "Edad: " << edad << endl;
+    cout << "Diagnostico actual: " << diagnostico << endl;
+    cout << "\n--- Historial completo ---" << endl;
+    if (historial == ""){
+        cout << "Sin registros aun." << endl;
+    }
+    else{
+        cout << historial;
+    }
+}
 void paciente::registrarPaciente() {
 
     cout << "\nIngrese nombre del paciente: ";
@@ -19,9 +41,10 @@ void paciente::registrarPaciente() {
 
     cout << "Ingrese edad: ";
     cin >> edad;
+    //limpia para que se escriba despues mas texto
     cin.ignore();
 }
-
+//Formulario para saber el diagnostico
 void paciente::formulario() {
 
     int opcion;
@@ -64,20 +87,13 @@ string paciente::generarDiagnostico() {
     return diagnostico;
 }
 
-void paciente::mostrarExpediente() {
-
-    cout << "\n===== EXPEDIENTE =====" << endl;
-    cout << "Nombre: " << nombre << endl;
-    cout << "Edad: " << edad << endl;
-    cout << "Diagnostico: " << diagnostico << endl;
-}
-
+//Sobrecarga solicita una cita sin especificar fecha
 void paciente::solicitarCita() {
 
     cout << "\nEl paciente " << nombre
          << " solicito una cita." << endl;
 }
-
+//Sobrecarga solicita una cita indicando una fecha
 void paciente::solicitarCita(string fecha) {
 
     cout << "\nEl paciente " << nombre

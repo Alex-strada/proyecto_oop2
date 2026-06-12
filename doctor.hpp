@@ -1,9 +1,7 @@
 //
 //  doctor.hpp
-//  
-//
-//  Created by Alejandro Estrada Pérez on 22/05/26.
-//
+//  Created by Alejandro Estrada Pérez on
+
 
 #ifndef doctor_hpp
 #define doctor_hpp

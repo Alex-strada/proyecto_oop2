@@ -1,9 +1,6 @@
 //
 //  enfermero.hpp
-//  
-//
-//  Created by Alejandro Estrada Pérez on 22/05/26.
-//
+//  Created by Alejandro Estrada Pérez
 
 #ifndef enfermero_hpp
 #define enfermero_hpp
@@ -21,6 +18,7 @@ private:
     int experiencia;
     
 public:
+//constructor
     enfermero (string nom,
                int ed,
                int idEmp,
@@ -29,6 +27,7 @@ public:
                string area,
                int exp);
     
+//metodos
     void trabajar () override;
     
     void tomarSignos ();

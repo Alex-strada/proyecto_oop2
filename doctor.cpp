@@ -1,9 +1,7 @@
 //
 //  doctor.cpp
-//  
-//
-//  Created by Alejandro Estrada Pérez on 22/05/26.
-//
+//  Created by Alejandro Estrada Pérez on 
+
 #include "doctor.hpp"
 
 doctor::doctor(string nom,
@@ -14,42 +12,27 @@ doctor::doctor(string nom,
                string esp,
                int consul)
 
-: empleado(nom,
-           ed,
-           idEmp,
-           sal,
-           tur) {
-
+: empleado(nom, ed, idEmp, sal, tur) {
     especialidad = esp;
     consultorio = consul;
 }
-
+/* Metodo sobrescrito de la clase empleado
+se aplica el polimorfismo por que trabajar()
+es diferente a cada empleado
+*/
 void doctor::trabajar() {
 
-    cout << "\nEl doctor "
-         << nombre
-         << " esta atendiendo pacientes en el consultorio "
-         << consultorio
-         << "."
-         << endl;
+    cout << "\nEl doctor " << nombre << " esta atendiendo pacientes en el consultorio " << consultorio << endl;
 }
-
+//Muestra el diagnostico por el doctor,
 void doctor::diagnosticar(string diagnostico) {
 
-    cout << "\nEl doctor "
-         << nombre
-         << " esta realizando el diagnostico..."
-         << endl;
+    cout << "\nEl doctor " << nombre << " esta realizando el diagnostico..." << endl;
 
-    cout << "Diagnostico: "
-         << diagnostico
-         << endl;
+    cout << "Diagnostico: " << diagnostico << endl;
 }
-
+// Simula la receta de un medicamento
 void doctor::recetarMedicamento() {
 
-    cout << "El doctor "
-         << nombre
-         << " receto medicamento."
-         << endl;
+    cout << "El doctor " << nombre << " receto medicamento." << endl;
 }

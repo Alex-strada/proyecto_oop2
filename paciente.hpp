@@ -1,9 +1,7 @@
-//
+
 //  paciente.hpp
-//  
-//
-//  Created by Alejandro Estrada Pérez on 22/05/26.
-//
+//  Created by Alejandro Estrada Pérez 
+
 #ifndef paciente_hpp
 #define paciente_hpp
 
@@ -21,8 +19,11 @@ private:
     string nombre;
     int edad;
     string diagnostico;
+    string historial;
+
 
 public:
+    
     paciente();
 
     void registrarPaciente();
@@ -36,6 +37,10 @@ public:
     void solicitarCita();
 
     void solicitarCita(string fecha);
+    
+    void agregarHistorial(string evento);
+    
+    string getNombre();
 };
 
 #endif /* paciente_hpp */
