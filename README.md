@@ -2,64 +2,69 @@
 
 ## Descripción
 
-Sistema desarrollado en C++ utilizando Programación Orientada a Objetos (POO) para la gestión de un hospital. El programa permite administrar información relacionada con empleados, doctores, enfermeros, pacientes, consultorios y salas de urgencias mediante una estructura basada en clases y relaciones de herencia.
+Sistema desarrollado en C++ utilizando Programación Orientada a Objetos (POO) para la gestión de un hospital. El programa administra empleados (doctores y enfermeros), pacientes y sus expedientes, mediante clases con herencia, clases abstractas y polimorfismo.
 
 ## Objetivo
 
-Implementar
+Implementar:
 
 - Clases y objetos
 - Encapsulamiento
 - Herencia
+- Clases abstractas
 - Polimorfismo
 - Constructores y destructores
-- Sobrecarga de métodos
+- Sobrecarga y sobreescritura de métodos
 
 ## Funcionalidades
 
-### Gestión de Empleados
-- Registrar empleados.
-- Consultar información laboral.
-- Administrar salarios y turnos.
+### Gestión de Empleados (clase abstracta `empleado`)
+
+- Registrar entrada de empleados.
+- Mostrar datos generales (nombre, edad, id, salario, turno).
+- Método `trabajar()` abstracto, implementado de forma distinta por cada tipo de empleado (polimorfismo).
 
 ### Gestión de Doctores
-- Registrar especialidades médicas.
-- Consultar información profesional.
-- Asignar pacientes.
+
+- Diagnosticar pacientes.
+- Recetar medicamentos.
+- Atender consultas y emergencias.
 
 ### Gestión de Enfermeros
-- Registrar personal de enfermería.
-- Administrar turnos y áreas asignadas.
+
+- Tomar signos vitales.
+- Asistir al doctor.
+- Atender consultas y emergencias.
 
 ### Gestión de Pacientes
-- Registrar pacientes.
-- Consultar historial básico.
-- Asignar médico responsable.
 
-### Gestión de Consultorios
-- Registrar consultorios disponibles.
-- Controlar ocupación y disponibilidad.
+- Registrar paciente (nombre, edad).
+- Llenar formulario de síntomas y generar diagnóstico.
+- Solicitar cita (con y sin fecha — sobrecarga de método).
+- Ver expediente con historial completo de atenciones.
 
-### Gestión de Urgencias
-- Registrar ingresos de emergencia.
-- Asignar pacientes a salas de urgencias.
+### Pase de lista (Polimorfismo)
 
-
+- El hospital mantiene un arreglo de punteros `empleado*` con varios doctores y enfermeros.
+- Al recorrerlo, cada objeto ejecuta su propia versión de `trabajar()` según su tipo real (doctor o enfermero).
 
 ## Estructura del Proyecto
 
 ```
 proyecto_oop2/
-│
-├── persona.h
-├── empleado.h
-├── doctor.h
-├── enfermero.h
-├── paciente.h
-├── consultorio.h
-├── hospital.h
-├── salaUrgencias.h
-├── main.cpp
+
+├── empleado.hpp / empleado.cpp
+
+├── doctor.hpp / doctor.cpp
+
+├── enfermero.hpp / enfermero.cpp
+
+├── paciente.hpp / paciente.cpp
+
+├── hospital_poo.hpp / hospital_poo.cpp
+
+├── UML.png
+
 └── README.md
 ```
 
@@ -76,6 +81,25 @@ g++ hospital_poo.cpp doctor.cpp enfermero.cpp empleado.cpp paciente.cpp -o hospi
 - Uso de constructores y destructores.
 - Polimorfismo mediante métodos virtuales.
 - Reutilización de código mediante jerarquías de clases.
+## Casos en los que el proyecto deja de funcionar
+
+- Si se ingresa una opción del menú fuera del rango 1-6, se muestra "Opción inválida" pero el programa continúa (no se rompe).
+- Si en el formulario de síntomas se ingresa un valor no numérico, `cin` queda en estado de error y puede provocar un ciclo infinito al leer la siguiente opción.
+- Si se agregan más de MAX_PERSONAL (10) empleados al arreglo, se ignoran los excedentes.
+- Si se llama a mostrarExpediente() antes de registrar al paciente, se muestra el historial vacío con el mensaje "Sin registros aún".
+
+## Conceptos de POO Aplicados
+
+- **Herencia**: `doctor` y `enfermero` heredan de `empleado`.
+- **Clase abstracta**: `empleado` define `trabajar()` como método virtual puro (`= 0`), obligando a sus clases hijas a implementarlo.
+- **Polimorfismo**: arreglo de punteros `empleado* personal[]` que invoca `trabajar()` polimórficamente según el tipo real del objeto (doctor o enfermero).
+- **Encapsulamiento**: atributos privados/protegidos con acceso mediante métodos públicos (`getNombre()`, `mostrarDatos()`, etc.).
+- **Sobrecarga de métodos**: `paciente::solicitarCita()` y `paciente::solicitarCita(string fecha)`.
+- **Sobreescritura de métodos**: `trabajar()` en `doctor` y `enfermero`.
+- **Composición/Agregación**: `hospital` se relaciona con varios objetos `empleado` (agregación, 0..*) y con `paciente` (agregación, 1).
+
+## Diagrama UML
+
 
 ## Autor
 
